@@ -596,6 +596,7 @@ body {
   left: 50%;
   background-color: var(--primary-bg-color);
   transform: translate(-50%, -50%);
+  padding: 40px;
 }
 
 .modal-close-btn {
@@ -626,10 +627,6 @@ body {
 
 /* Формы модального окна */
 
-.modal-form {
-  padding: 40px;
-}
-
 .modal-form-title {
   display: block;
   font-weight: 700;
@@ -642,6 +639,12 @@ body {
 
 .modal-form-field {
   display: block;
+  display: block;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: var(--secondary-text-color);
+  margin-bottom: 4px;
 }
 .modal-form-input {
   display: block;
@@ -669,12 +672,13 @@ body {
 
 .modal-form-text {
   display: block;
-  font-size: 12px;
-  line-height: 1.17;
-  letter-spacing: 0.01em;
-  color: var(--secondary-text-color);
   margin-bottom: 4px;
 }
+
+textarea::-webkit-input-placeholder {
+  color: rgba(117, 117, 117, 0.5);
+}
+
 .chechbox-text {
   font-size: 14px;
   line-height: 1.71;
@@ -718,27 +722,8 @@ body {
   transform: translateY(50%);
   transition: fill var(--transit-dur-func);
 }
-.check-window-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 16px;
-  height: 15px;
-  position: relative;
-}
-.check-vector {
-  position: absolute;
-}
-.modal-form-check:checked + .check-window-box {
-  background-color: var(--accent-color);
-  border-radius: 2px;
-  background-image: url('../images/check.svg');
-  background-size: 11px 8px;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  transition: background-color var(--transit-dur-func);
-}
-.modal-form-check:checked + .check-window-box > .check-vector {
+
+.modal-form-check:checked + .check-vector {
   position: absolute;
   white-space: nowrap;
   width: 1px;
@@ -762,6 +747,13 @@ body {
   clip-path: inset(50%);
   margin: -1px;
 }
+.check-check {
+  display: none;
+}
+.modal-form-check:checked ~ .check-check {
+  display: block;
+}
+
 .modal-form-input:focus + .person-icon {
   fill: var(--accent-color);
 }
@@ -769,13 +761,13 @@ body {
   outline-color: var(--accent-color);
   transition: outline-color var(--transit-dur-func);
 }
-.modal-form-coment {
+.modal-form-coment:focus {
   outline-color: var(--accent-color);
 }
-.modal-form-check:focus + .check-window-box > .check-vector {
+.modal-form-check:focus + .check-vector {
   fill: var(--accent-color);
 }
-.modal-form-check:focus + .check-window-box {
+.modal-form-check:focus ~ .check-check {
   border: solid 2px var(--logo-header-color);
   border-radius: 2px;
 }
